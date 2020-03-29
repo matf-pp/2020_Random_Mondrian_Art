@@ -4,12 +4,14 @@ HEIGHT = 768
 SPLIT_LOWER = 85
 SPLIT_TOL = 1.5
 #
+#
 def choose_color():
 def choose_lines():
 def split_both(x,y,w,h):
 def split_hor(x,y,w,h):
 def split_ver(x,y,w,h):
 def make_svg():
+#
 #
 def mondrian(x,y,w,h):
     #algoritam zasnovan na rekurziji
