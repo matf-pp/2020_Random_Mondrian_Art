@@ -5,6 +5,7 @@ SPLIT_LOWER = 85
 SPLIT_TOL = 1.5
 #
 #
+#
 def choose_color():
 def choose_lines():
 def split_both(x,y,w,h):
@@ -14,6 +15,7 @@ def make_svg():
 #
 #
 def mondrian(x,y,w,h):
+     
     #algoritam zasnovan na rekurziji
     if w > WIDTH/2 and h > HEIGHT/2:
         split_both(x,y,w,h)
