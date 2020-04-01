@@ -39,7 +39,6 @@ def split_both(x,y,w,h):
     #vsp - vertical split point
     hsp = np.random.uniform(0.33,0.68)
     vsp = np.random.uniform(0.33,0.68)
-    mondrian(x,y+top_height,left_width, bottom_height)
     rand_width = round(hsp*w)
     width_left=w-rand_width
     rand_height=round(vsp*h)
