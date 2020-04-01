@@ -35,6 +35,18 @@ def choose_lines():
     ###
 
 def split_both(x,y,w,h):
+    #hsp - horizontal split point 
+    #vsp - vertical split point
+    hsp = np.random.uniform(0.33,0.68)
+    vsp = np.random.uniform(0.33,0.68)
+    left_width = round(hsp*w)
+    right_width=w-left_with
+    top_height=round(vsp*h)
+    bottom_height=h-top_height
+    mondrian(x,y,left_width,top_height)
+    mondrian(x+left_width,y,right_width,top_height)
+    mondrian(x,y+top_height,left_width, bottom_height)
+    mondrian(x+left_width,y+top_height,right_width,bottom_height)
     
     ###
     ### functio for making a horisontal and vertical split of rectangle
