@@ -39,14 +39,15 @@ def split_both(x,y,w,h):
     #vsp - vertical split point
     hsp = np.random.uniform(0.33,0.68)
     vsp = np.random.uniform(0.33,0.68)
-    left_width = round(hsp*w)
-    right_width=w-left_with
-    top_height=round(vsp*h)
-    bottom_height=h-top_height
-    mondrian(x,y,left_width,top_height)
-    mondrian(x+left_width,y,right_width,top_height)
     mondrian(x,y+top_height,left_width, bottom_height)
-    mondrian(x+left_width,y+top_height,right_width,bottom_height)
+    rand_width = round(hsp*w)
+    width_left=w-rand_width
+    rand_height=round(vsp*h)
+    height_left=h-rand_height
+    mondrian(x,y,rand_width,rand_height)
+    mondrian(x+rand_width,y,width_left,rand_height)
+    mondrian(x,y+rand_height,rand_width, height_left)
+    mondrian(x+rand_width,y+rand_height,width_left,height_left)
     
     ###
     ### functio for making a horizontal and vertical split of rectangle
