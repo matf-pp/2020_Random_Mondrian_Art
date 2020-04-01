@@ -49,13 +49,13 @@ def split_both(x,y,w,h):
     mondrian(x+left_width,y+top_height,right_width,bottom_height)
     
     ###
-    ### functio for making a horisontal and vertical split of rectangle
+    ### functio for making a horizontal and vertical split of rectangle
     ###
 
 def split_hor(x,y,w,h):
 
     ###
-    ### function for making a horisontal split of rectangle, recurisve call of mondrian func
+    ### function for making a horizontal split of rectangle, recurisve call of mondrian func
     ###
 
 def split_ver(x,y,w,h):
@@ -101,7 +101,7 @@ def mondrian(x,y,w,h):
         else:
         #choose_color() call
         #choose_width() call
-        #apend in list in SVGlike format
+        #append in list in SVGlike format
 if __name__ == '__main__':
     ###
     ### determinating screen resolutio in crossplatfor environment is possible with
