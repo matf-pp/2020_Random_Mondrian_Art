@@ -35,6 +35,11 @@ def choose_lines():
     ###
 
 def split_both(x,y,w,h):
+    ###
+    ### functio for making a horizontal and vertical split of rectangle
+    ###
+    
+    
     #hsp - horizontal split point 
     #vsp - vertical split point
     hsp = np.random.uniform(0.33,0.68)
@@ -48,22 +53,33 @@ def split_both(x,y,w,h):
     mondrian(x,y+rand_height,rand_width, height_left)
     mondrian(x+rand_width,y+rand_height,width_left,height_left)
     
-    ###
-    ### functio for making a horizontal and vertical split of rectangle
-    ###
+    
 
 def split_hor(x,y,w,h):
 
     ###
     ### function for making a horizontal split of rectangle, recurisve call of mondrian func
     ###
+    
+    def split_h(x, y, w, h):
+    hsp = np.random.uniform(0.33,0.68)
+    rand_width = round(hsp * w)
+    width_left = w - rand_width
+    mondrian(x, y, rand_width, h)
+    mondrian(x + rand_width, y, width_left, h)
+  
 
 def split_ver(x,y,w,h):
     
     ###
     ### function for making a vertical split of rectangle, recursive call of mondrian func
     ###
-
+    vsp = np.random.uniform(0.33,0.68)
+    rand_height = round(vsp * h)
+    height_left = h - rand_height
+    mondrian(x, y, w, rand_height)
+    mondrian(x, y + rand_height, w, height_left)
+    
 def make_svg():
 
     ###
