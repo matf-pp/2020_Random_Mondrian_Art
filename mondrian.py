@@ -65,7 +65,6 @@ def split_hor(x,y,w,h):
     ### function for making a horizontal split of rectangle, recurisve call of mondrian func
     ###
     
-    def split_h(x, y, w, h):
     hsp = np.random.uniform(0.33,0.68)
     rand_width = round(hsp * w)
     width_left = w - rand_width
