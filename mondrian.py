@@ -8,7 +8,7 @@ SPLIT_TOL = 1.5
 #choose_color2
 #other way to choose color by creating cycle 
 rng = np.random.RandomState(None)
-colors = ["yellow","red","blue","white","white","white","black"]
+colors = ["yellow","red","blue","black","white","white","white"]
 rng.shuffle(colors)
 colors = cycle(colors)
 #choose_color2
