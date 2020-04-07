@@ -132,6 +132,7 @@ list_svg=['<?xml version="1.0" encoding="utf-8"?>',
                '</defs>']
 mondrian(0,0,1024,768, list_svg)
 list_svg.append("</svg>")
+#creating list_svg as a string with '\n' to send it as a argument to write
 list_svg = '\n'.join(list_svg)
 with open('example.svg', 'w') as fo:
             fo.write(list_svg)
