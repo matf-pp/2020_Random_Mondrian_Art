@@ -4,8 +4,8 @@ WIDTH = 1024
 HEIGHT = 768
 SPLIT_LOWER = 85
 SPLIT_TOL = 1.5
-rng = np.random.RandomState(random_state)
-colors = ["yellow","red","blue","green"]
+rng = np.random.RandomState(None)
+colors = ["yellow","red","blue","black","white","white","white","white"]
 rng.shuffle(colors)
 colors = cycle(colors)
 
