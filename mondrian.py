@@ -1,4 +1,5 @@
 import numpy as np
+from itertools import cycle
 
 WIDTH = 1024   
 HEIGHT = 768
