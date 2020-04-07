@@ -120,10 +120,11 @@ def mondrian(x,y,w,h, list_svg):
         elif vsplit < h:
             split_ver(x,y,w,h, list_svg)
         else:
+            #just another way of randomizing(we will use the choose_color)
             color2 = next(colors)
             color = choose_color();
             #widdth = choose_width();
-            list_svg.append('<rect x="{}" y="{}" width="{}" height="{}" style="fill: {}"/>'.format(x, y, w, h, color2))
+            list_svg.append('<rect x="{}" y="{}" width="{}" height="{}" style="fill: {}"/>'.format(x, y, w, h, color))
             list_svg.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x,y,x+w,y))
             list_svg.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x,y+h,x,y))
             list_svg.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x+w,y+h,x+w,y))
