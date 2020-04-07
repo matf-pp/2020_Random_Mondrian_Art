@@ -1,9 +1,13 @@
 import numpy as np
+from itertools import cycle
 WIDTH = 1024   
 HEIGHT = 768
 SPLIT_LOWER = 85
 SPLIT_TOL = 1.5
-
+rng = np.random.RandomState(random_state)
+colors = ["yellow","red","blue","green"]
+rng.shuffle(colors)
+colors = cycle(colors)
 
 def choose_color():
     
@@ -111,9 +115,10 @@ def mondrian(x,y,w,h, list_svg):
         elif vsplit < h:
             split_ver(x,y,w,h, list_svg)
         else:
-            color = choose_color();
+            color2 = next(colors)
+            color = choose_color()
             #widdth = choose_width();
-            list_svg.append('<rect x="{}" y="{}" width="{}" height="{}" style="fill: {}"/>'.format(x, y, w, h, color))
+            list_svg.append('<rect x="{}" y="{}" width="{}" height="{}" style="fill: {}"/>'.format(x, y, w, h, color2))
             list_svg.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x,y,x+w,y))
             list_svg.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x,y+h,x,y))
             list_svg.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x+w,y+h,x+w,y))
