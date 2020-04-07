@@ -12,6 +12,7 @@ rng.shuffle(colors)
 colors = cycle(colors)
 #choose_color2
 #
+
 def choose_color():
     
     ###
