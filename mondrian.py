@@ -35,7 +35,7 @@ def choose_color():
     ### function for choosing a random width of line
     ###
 
-def split_both(x,y,w,h, svg_list):
+def split_both(x,y,w,h, list_svg):
     ###
     ### functio for making a horizontal and vertical split of rectangle
     ###
@@ -59,7 +59,7 @@ def split_both(x,y,w,h, svg_list):
     
     
 
-def split_hor(x,y,w,h, svg_list):
+def split_hor(x,y,w,h, list_svg):
 
     ###
     ### function for making a horizontal split of rectangle, recurisve call of mondrian func
@@ -72,7 +72,7 @@ def split_hor(x,y,w,h, svg_list):
     mondrian(x + rand_width, y, width_left, h, list_svg)
   
 
-def split_ver(x,y,w,h, svg_list):
+def split_ver(x,y,w,h, list_svg):
     
     ###
     ### function for making a vertical split of rectangle, recursive call of mondrian func
