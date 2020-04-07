@@ -113,26 +113,15 @@ def mondrian(x,y,w,h, list_svg):
         else:
             color = choose_color();
             #widdth = choose_width();
-            list_svg.append('<rect x="{}" y="{}" width="{}" height="{}" style="fill: {}"/>'.format(x, y, w, h, color))
-            list_svg.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x,y,x+w,y))
-            list_svg.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x,y+h,x,y))
-            list_svg.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x+w,y+h,x+w,y))
-            list_svg.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x+w,y+h,x,y+h))
-list_svg=['<?xml version="1.0" encoding="utf-8"?>',
-               '<svg xmlns="http://www.w3.org/2000/svg"',
-               ' xmlns:xlink="http://www.w3.org/1999/xlink" width="{}"'
-               ' height="{}" >'.format(WIDTH, HEIGHT),
-               '<defs>',
-               '    <style type="text/css"><![CDATA[',
-               '        line {',
-               '        stroke: #000;',
-               '        stroke-width: 5px;',
-               '        }',
-               '    ]]></style>'
-               '</defs>']
+            list_svg.append('<rect x="{}" y="{}" width="{}" height="{}" style="fill: {};stroke-width:4;stroke:black"/>'.format(x, y, w, h, color))
+            
+            #list_svg.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x,y,x+w,y))
+            #list_svg.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x,y+h,x,y))
+            #list_svg.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x+w,y+h,x+w,y))
+            #list_svg.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x+w,y+h,x,y+h))
+list_svg=['<?xml version="1.0" encoding="utf-8"?>','<svg xmlns="http://www.w3.org/2000/svg" width="{}" height="{}">'.format(WIDTH, HEIGHT)]
 mondrian(0,0,1024,768, list_svg)
 list_svg.append("</svg>")
-#creating list_svg as a string with '\n' to send it as a argument to write
 list_svg = '\n'.join(list_svg)
 with open('example.svg', 'w') as fo:
             fo.write(list_svg)
