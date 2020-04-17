@@ -16,13 +16,13 @@ def choose_color():
     for i in range(n):
         rv = np.random.exponential()
         if rv < 0.15:
-            clrs.append("red")
+            clrs.append("black")
         elif rv < 0.30:
             clrs.append("skyblue")
         elif rv < 0.50:
             clrs.append("yellow")
         elif rv < 0.70:
-            clrs.append("black")
+            clrs.append("red")
         else:
             clrs.append("white")
     np.random.shuffle(clrs)
