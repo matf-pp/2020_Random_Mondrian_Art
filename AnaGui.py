@@ -150,8 +150,8 @@ class Window(QWidget):
                         
         return groupBox
 
-     def color_list(state):
-            if whiteCheck.isChecked():
+    def color_list(state):
+        if whiteCheck.isChecked():
             color.append('#ffffff')
         if blackCheck.isChecked():
             color.append('#000000')
