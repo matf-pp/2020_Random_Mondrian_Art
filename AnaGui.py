@@ -6,7 +6,10 @@ from PyQt5.QtWidgets import *
 class Window(QWidget):
     def __init__(self,parent=None):
         super(Window,self).__init__(parent)
-        
+        self.initUI()
+        self.show()
+    
+    def initUI():    
         grid=QGridLayout()
         
         colorsLabel = QLabel("Chose minimum 3 colors:")
@@ -147,8 +150,49 @@ class Window(QWidget):
                         
         return groupBox
 
+     def color_list(state):
+            if whiteCheck.isChecked():
+            color.append('#ffffff')
+        if blackCheck.isChecked():
+            color.append('#000000')
+        if redCheck.isChecked():
+            color.append('#ff0000') 
+        if yellowCheck.isChecked():
+            color.append('#ffff00')
+        if aquaCheck.isChecked():
+            color.append('#00ffff')
+        if blueCheck.isChecked():
+            color.append('#0000ff')
+        if fuchsiaCheck.isChecked():
+            color.append('#ff00ff')
+        if purpleCheck.isChecked():
+            color.append('#800080')
+        if indigoCheck.isChecked():
+            color.append('#4b0082')
+        if seashellCheck.isChecked():
+            color.append('#fff5ee')
+        if honeydewCheck.isChecked():
+            color.append('#f0fff0')
+        if siennaCheck.isChecked(): 
+            color.append('#a0522d')
+        if turquoiseCheck.isChecked():
+            color.append('#40e0d0')
+        if navyCheck.isChecked():
+            color.append('#000080')
+        if hotpinkCheck.isChecked():
+            color.append('#ff69b4')
+        if springgreenCheck.isChecked():
+            color.append('#00ff7f')
+        if limeCheck.isChecked():
+            color.append('#00ff00')
+        if coralCheck.isChecked():
+            color.append('#ff7f50')
+        if skyblueCheck.isChecked():
+            color.append('#87ceeb')
+        if khakiCheck.isChecked(): 
+            color.append('#f0e68c')
+
 if __name__== '__main__':
-    app=QApplication(sys.argv)
-    clock=Window()
-    clock.show()
-    sys.exit(app.exec_())
+    app=QApplication([])
+    window=Window()
+    app.exec_()
