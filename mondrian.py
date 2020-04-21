@@ -7,9 +7,7 @@ SPLIT_TOL = 1.5
 
 def choose_color():
     
-    ###
     ### function for choosing a random color for rectangele 
-    ###
     
     clrs = []
     n = np.random.randint(4,900)
@@ -31,9 +29,7 @@ def choose_color():
 
 def make_svg(rect_list):
     
-    ###
     ### fuction for writing rectangles from list in .svg file
-    ###
 
     with open('art.svg', 'w') as file:
         svg_list= ['<?xml version="1.0" encoding="utf-8"?>',
@@ -55,21 +51,13 @@ def make_svg(rect_list):
 
 def split_both(x,y,w,h, rect_list):
 
-    ###
     ### functio for making a horizontal and vertical split of rectangle
-    ###
 
-    #hsp - horizontal split point
-    #vsp - vertical split point
-    hsp = np.random.uniform(0.33,0.68)
-    vsp = np.random.uniform(0.33,0.68)
-    #radnom width
+    hsp = np.random.uniform(0.33,0.68) #hsp - horizontal split point
+    vsp = np.random.uniform(0.33,0.68) #vsp - vertical split point
     rand_width = round(hsp*w)
-    #what's left from width
     width_left=w-rand_width
-    #random height
     rand_height=round(vsp*h)
-    #what's left from height
     height_left=h-rand_height
     mondrian(x,y,rand_width,rand_height, rect_list)
     mondrian(x+rand_width,y,width_left,rand_height, rect_list)
@@ -80,9 +68,7 @@ def split_both(x,y,w,h, rect_list):
 
 def split_hor(x,y,w,h, rect_list):
 
-    ###
     ### function for making a horizontal split of rectangle, recurisve call of mondrian func
-    ###
 
     hsp = np.random.uniform(0.33,0.68)
     rand_width = round(hsp * w)
@@ -93,9 +79,7 @@ def split_hor(x,y,w,h, rect_list):
 
 def split_ver(x,y,w,h, rect_list):
 
-    ###
     ### function for making a vertical split of rectangle, recursive call of mondrian func
-    ###
 
     vsp = np.random.uniform(0.33,0.68)
     rand_height = round(vsp * h)
@@ -105,11 +89,9 @@ def split_ver(x,y,w,h, rect_list):
 
 def mondrian(x,y,w,h, rect_list):
 
-    ###
     ### functio which decides on what way a rectangle will be drawn
     ### put those rectangles in SVGlike form in list of strings
     ### which will be processed with make_svg(list) function
-    ###
 
     if w > WIDTH/2 and h > HEIGHT/2:
         split_both(x,y,w,h,rect_list)
@@ -120,10 +102,8 @@ def mondrian(x,y,w,h, rect_list):
     else:
         hsplit = np.random.uniform(SPLIT_LOWER, max(round(SPLIT_TOL * w) + 1, \
                                          SPLIT_LOWER + 1))
-        #print(hsplit)
         vsplit = np.random.uniform(SPLIT_LOWER, max(round(SPLIT_TOL * h) + 1, \
                        SPLIT_LOWER + 1))
-        #print(vsplit)
         if hsplit < w and vsplit < h:
             split_both(x,y,w,h, rect_list)
         elif hsplit < w:
