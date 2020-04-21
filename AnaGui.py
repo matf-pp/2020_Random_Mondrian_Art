@@ -13,7 +13,7 @@ class Window(QWidget):
         grid=QGridLayout()
         
         colorsLabel = QLabel("Chose minimum 3 colors:")
-        grid.addWidget(colorsLabel,0,2,1,4)
+        grid.addWidget(colorsLabel,0,1,1,4)
         
         grid.addWidget(self.createExampleGroup(1),1,0)
         grid.addWidget(self.createExampleGroup(2),1,1)
