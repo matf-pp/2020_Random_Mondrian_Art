@@ -9,7 +9,7 @@ class Window(QWidget):
         self.initUI()
         self.show()
     
-    def initUI():    
+    def initUI(self):    
         grid=QGridLayout()
         
         colorsLabel = QLabel("Chose minimum 3 colors:")
