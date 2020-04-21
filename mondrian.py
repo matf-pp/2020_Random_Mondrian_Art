@@ -54,12 +54,12 @@ def make_svg(rect_list):
         file.write(svg_str)
 
 def split_both(x,y,w,h, rect_list):
-    
+
     ###
     ### functio for making a horizontal and vertical split of rectangle
     ###
-    
-    #hsp - horizontal split point 
+
+    #hsp - horizontal split point
     #vsp - vertical split point
     hsp = np.random.uniform(0.33,0.68)
     vsp = np.random.uniform(0.33,0.68)
@@ -75,36 +75,36 @@ def split_both(x,y,w,h, rect_list):
     mondrian(x+rand_width,y,width_left,rand_height, rect_list)
     mondrian(x,y+rand_height,rand_width, height_left, rect_list)
     mondrian(x+rand_width,y+rand_height,width_left,height_left, rect_list)
-    
-    
+
+
 
 def split_hor(x,y,w,h, rect_list):
 
     ###
     ### function for making a horizontal split of rectangle, recurisve call of mondrian func
     ###
-    
+
     hsp = np.random.uniform(0.33,0.68)
     rand_width = round(hsp * w)
     width_left = w - rand_width
     mondrian(x, y, rand_width, h, rect_list)
     mondrian(x + rand_width, y, width_left, h, rect_list)
-  
+
 
 def split_ver(x,y,w,h, rect_list):
-    
+
     ###
     ### function for making a vertical split of rectangle, recursive call of mondrian func
     ###
-    
+
     vsp = np.random.uniform(0.33,0.68)
     rand_height = round(vsp * h)
     height_left = h - rand_height
     mondrian(x, y, w, rand_height, rect_list)
     mondrian(x, y + rand_height, w, height_left, rect_list)
-    
+
 def mondrian(x,y,w,h, rect_list):
-    
+
     ###
     ### functio which decides on what way a rectangle will be drawn
     ### put those rectangles in SVGlike form in list of strings
