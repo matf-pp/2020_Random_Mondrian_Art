@@ -1,15 +1,12 @@
 import numpy as np
-
+from itertools import cycle
 WIDTH = 1024   
 HEIGHT = 768
 SPLIT_LOWER = 85
 SPLIT_TOL = 1.5
 
-def choose_color():
+
     
-    ### function for choosing a random color for rectangele 
-
-
 def make_svg(rect_list):
     
     ### fuction for writing rectangles from list in .svg file
@@ -94,7 +91,7 @@ def mondrian(x,y,w,h, rect_list):
         elif vsplit < h:
             split_ver(x,y,w,h, rect_list)
         else:
-            color = choose_color()
+            color = next(colors)
             rect_list.append('<rect x="{}" y="{}" width="{}" height="{}" style="fill: {}"/>'.format(x, y, w, h, color))
             rect_list.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x,y,x+w,y))
             rect_list.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x,y+h,x,y))
@@ -102,6 +99,12 @@ def mondrian(x,y,w,h, rect_list):
             rect_list.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x+w,y+h,x,y+h))
 
 ## mondrian and make_svg is called in main()
-rect_list = []
-mondrian(0, 0, WIDTH, HEIGHT, rect_list)
-make_svg(rect_list)
+def function(w, h, cl):
+    global colors 
+    colors = cycle(cl)
+    rect_list = []
+    mondrian(0, 0, w, h, rect_list)
+    make_svg(rect_list)
+
+
+function(1090, 720, ['red', 'blue', 'yellow'])
