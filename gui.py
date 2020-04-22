@@ -10,8 +10,7 @@ class Window(QWidget):
         p = self.palette()
         p.setColor(self.backgroundRole(), color)
         self.setPalette(p)
-        self.setMaximumWidth(600)
-        self.setMaximumHeight(600)
+        
 
         self.seagreenCheck=QCheckBox("SEAGREEN")
         self.aquaCheck= QCheckBox("AQUA")
@@ -37,7 +36,9 @@ class Window(QWidget):
         self.initUI()
         self.show()
     
-    def initUI(self):    
+    def initUI(self):  
+        self.setMaximumWidth(600)
+        self.setMaximumHeight(600)    
         grid=QGridLayout()
         self.seagreenCheck.setStyleSheet('color: #2E8B57')
         self.aquaCheck.setStyleSheet('color: #00ffff')
