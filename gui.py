@@ -11,7 +11,7 @@ class Window(QWidget):
         p.setColor(self.backgroundRole(), color)
         self.setPalette(p)
         
-
+        self.button1 = QPushButton(self)
         self.seagreenCheck=QCheckBox("SEAGREEN")
         self.aquaCheck= QCheckBox("AQUA")
         self.indigoCheck = QCheckBox("INDIGO")
@@ -38,7 +38,8 @@ class Window(QWidget):
     
     def initUI(self):  
         self.setMaximumWidth(600)
-        self.setMaximumHeight(600)    
+        self.setMaximumHeight(600)
+        self.setMinimumSize(300, 300)
         grid=QGridLayout()
         self.seagreenCheck.setStyleSheet('color: #2E8B57')
         self.aquaCheck.setStyleSheet('color: #00ffff')
@@ -75,31 +76,6 @@ class Window(QWidget):
         self.setWindowTitle("Random Mondrian art")        
         self.resize(490,300)
         
-        
-       
-        
-        ###
-        self.seagreenCheck.stateChanged.connect(lambda: self.color_list(self.seagreenCheck))
-        self.aquaCheck.stateChanged.connect(lambda:self.color_list(self.aquaCheck))
-        self.indigoCheck.stateChanged.connect(lambda:self.color_list(self.indigoCheck))
-        self.turquoiseCheck.stateChanged.connect(lambda:self.color_list(self.turquoiseCheck))
-        self.limeCheck.stateChanged.connect(lambda:self.color_list(self.limeCheck))
-        self.aquamarineCheck.stateChanged.connect(lambda:self.color_list(self.aquamarineCheck))
-        self.blueCheck.stateChanged.connect(lambda:self.color_list(self.blueCheck))
-        self.seashellCheck.stateChanged.connect(lambda:self.color_list(self.seashellCheck))
-        self.navyCheck.stateChanged.connect(lambda:self.color_list(self.navyCheck))
-        self.coralCheck.stateChanged.connect(lambda:self.color_list(self.coralCheck))
-        self.redCheck.stateChanged.connect(lambda:self.color_list(self.redCheck))
-        self.fuchsiaCheck.stateChanged.connect(lambda:self.color_list(self.fuchsiaCheck))
-        self.honeydewCheck.stateChanged.connect(lambda:self.color_list(self.honeydewCheck))
-        self.hotpinkCheck.stateChanged.connect(lambda:self.color_list(self.hotpinkCheck))
-        self.skyblueCheck.stateChanged.connect(lambda:self.color_list(self.skyblueCheck))
-        self.yellowCheck.stateChanged.connect(lambda:self.color_list(self.yellowCheck))
-        self.purpleCheck.stateChanged.connect(lambda:self.color_list(self.purpleCheck))
-        self.siennaCheck.stateChanged.connect(lambda:self.color_list(self.siennaCheck))
-        self.springgreenCheck.stateChanged.connect(lambda:self.color_list(self.springgreenCheck))
-        self.khakiCheck.stateChanged.connect(lambda:self.color_list(self.khakiCheck))
-        ### kick uki
 
     def createExampleGroup(self,ind):
         
@@ -150,12 +126,12 @@ class Window(QWidget):
             hbox.addWidget(edit)
            
         elif ind==7:
-            button1 = QPushButton(self)
-            button1.setText("Generate")
+            self.button1.setText("Generate")
+            self.button1.clicked.connect(lambda: self.color_list(self.button1))
             rButton = QRadioButton(self)
             rButton.setText("Pattern Fill")
             vbox.addWidget(rButton)
-            vbox.addWidget(button1)
+            vbox.addWidget(self.button1)
         
         if not (ind ==5 or ind==6):
             groupBox.setLayout(vbox)
@@ -167,7 +143,6 @@ class Window(QWidget):
     def color_list(self,state):
         if self.seagreenCheck.isChecked():
             self.color.add('#2E8B57')
-            print(self.color)
         if self.aquamarineCheck.isChecked():
             self.color.add('#7FFFD4')
         if self.redCheck.isChecked():
@@ -206,6 +181,9 @@ class Window(QWidget):
             self.color.add('#87ceeb')
         if self.khakiCheck.isChecked(): 
             self.color.add('#f0e68c')
+        if len(self.color) < 2:
+            print("Greska")
+        print(self.color)
 
 if __name__== '__main__':
     app=QApplication([])
