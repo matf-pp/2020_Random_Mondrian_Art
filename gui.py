@@ -1,18 +1,23 @@
 import sys
-#from PyQt5.QtWidgets import (QApplication, QCheckBox, QGridLayout, QGroupBox,
- #       QMenu, QPushButton, QRadioButton, QVBoxLayout, QWidget)
 from PyQt5.QtWidgets import *
-
+from PyQt5.QtCore import *
+from PyQt5.QtGui import *
 class Window(QWidget):
     
     def __init__(self,parent=None):
         super(Window,self).__init__(parent)
-        self.seagreenCheck=QCheckBox('SEAGREEN')
+        color = QColor(128,128,128)
+        p = self.palette()
+        p.setColor(self.backgroundRole(), color)
+        self.setPalette(p)
+
+        
+        self.seagreenCheck=QCheckBox("SEAGREEN")
         self.aquaCheck= QCheckBox("AQUA")
         self.indigoCheck = QCheckBox("INDIGO")
         self.turquoiseCheck = QCheckBox("TURQUOISE")
         self.limeCheck = QCheckBox("LIME")
-        self.blackCheck = QCheckBox('BLACK')
+        self.aquamarineCheck = QCheckBox("AQUAMARINE")
         self.blueCheck = QCheckBox("BLUE")
         self.seashellCheck = QCheckBox("SEASHELL")
         self.navyCheck = QCheckBox("NAVY")
@@ -38,7 +43,7 @@ class Window(QWidget):
         self.indigoCheck.setStyleSheet('color: #4b0082')
         self.turquoiseCheck.setStyleSheet('color: #40e0d0')
         self.limeCheck.setStyleSheet('color: #00ff00')
-        self.blackCheck.setStyleSheet('color: #000000')
+        self.aquamarineCheck.setStyleSheet('color: #7FFFD4')
         self.blueCheck.setStyleSheet('color: #0000ff')
         self.seashellCheck.setStyleSheet('color: #fff5ee')
         self.navyCheck.setStyleSheet('color: #000080')
@@ -77,7 +82,7 @@ class Window(QWidget):
         self.indigoCheck.stateChanged.connect(lambda:self.color_list(self.indigoCheck))
         self.turquoiseCheck.stateChanged.connect(lambda:self.color_list(self.turquoiseCheck))
         self.limeCheck.stateChanged.connect(lambda:self.color_list(self.limeCheck))
-        self.blackCheck.stateChanged.connect(lambda:self.color_list(self.blackCheck))
+        self.aquamarineCheck.stateChanged.connect(lambda:self.color_list(self.aquamarineCheck))
         self.blueCheck.stateChanged.connect(lambda:self.color_list(self.blueCheck))
         self.seashellCheck.stateChanged.connect(lambda:self.color_list(self.seashellCheck))
         self.navyCheck.stateChanged.connect(lambda:self.color_list(self.navyCheck))
@@ -110,7 +115,7 @@ class Window(QWidget):
             vbox.addWidget(self.limeCheck)
               
         elif ind==2:
-            vbox.addWidget(self.blackCheck)
+            vbox.addWidget(self.aquamarineCheck)
             vbox.addWidget(self.blueCheck)
             vbox.addWidget(self.seashellCheck)
             vbox.addWidget(self.navyCheck)
@@ -161,8 +166,8 @@ class Window(QWidget):
         if self.seagreenCheck.isChecked():
             self.color.add('#2E8B57')
             print(self.color)
-        if self.blackCheck.isChecked():
-            self.color.add('#000000')
+        if self.aquamarineCheck.isChecked():
+            self.color.add('#7FFFD4')
         if self.redCheck.isChecked():
             self.color.add('#ff0000') 
         if self.yellowCheck.isChecked():
