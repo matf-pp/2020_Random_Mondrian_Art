@@ -33,67 +33,26 @@ class Window(QWidget):
     
     def initUI(self):    
         grid=QGridLayout()
-        ####################################################
-        
         self.whiteCheck.setStyleSheet('color: #ffffff')
-        
-    
         self.aquaCheck.setStyleSheet('color: #00ffff')
-        
-        
         self.indigoCheck.setStyleSheet('color: #4b0082')
-        
-        
         self.turquoiseCheck.setStyleSheet('color: #40e0d0')
-        
-       
         self.limeCheck.setStyleSheet('color: #00ff00')
-        
-        
         self.blackCheck.setStyleSheet('color: #000000')
-        
-        
         self.blueCheck.setStyleSheet('color: #0000ff')
-        
-        
         self.seashellCheck.setStyleSheet('color: #fff5ee')
-        
-        
         self.navyCheck.setStyleSheet('color: #000080')
-        
-        
         self.coralCheck.setStyleSheet('color: #ff7f50' )
-        
-       
         self.redCheck.setStyleSheet('color: #ff0000' )
-        
-        
         self.fuchsiaCheck.setStyleSheet('color: #ff00ff' )
- 
-        
         self.honeydewCheck.setStyleSheet('color: #f0fff0' )
-
-       
         self.hotpinkCheck.setStyleSheet('color: #ff69b4' )
-        
-       
         self.skyblueCheck.setStyleSheet('color: #87ceeb' )
-        
-       
         self.yellowCheck.setStyleSheet('color: #ffff00')
-        
-        
         self.purpleCheck.setStyleSheet('color: #800080')
-        
-       
         self.siennaCheck.setStyleSheet('color: #a0522d')
-        
-        
         self.springgreenCheck.setStyleSheet('color: #00ff7f')
-        
-        
         self.khakiCheck.setStyleSheet('color: #f0e68c')
-        ####################################################
         colorsLabel = QLabel("Chose minimum 3 colors:")
         grid.addWidget(colorsLabel,0,1,1,4)
         
@@ -116,7 +75,24 @@ class Window(QWidget):
         self.whiteCheck.stateChanged.connect(lambda: self.color_list(self.whiteCheck))
         self.aquaCheck.stateChanged.connect(lambda:self.color_list(self.aquaCheck))
         self.indigoCheck.stateChanged.connect(lambda:self.color_list(self.indigoCheck))
-        ###add for other colors. kick uki
+        self.turquoiseCheck.stateChanged.connect(lambda:self.color_list(self.turquoiseCheck))
+        self.limeCheck.stateChanged.connect(lambda:self.color_list(self.limeCheck))
+        self.blackCheck.stateChanged.connect(lambda:self.color_list(self.blackCheck))
+        self.blueCheck.stateChanged.connect(lambda:self.color_list(self.blueCheck))
+        self.seashellCheck.stateChanged.connect(lambda:self.color_list(self.seashellCheck))
+        self.navyCheck.stateChanged.connect(lambda:self.color_list(self.navyCheck))
+        self.coralCheck.stateChanged.connect(lambda:self.color_list(self.coralCheck))
+        self.redCheck.stateChanged.connect(lambda:self.color_list(self.redCheck))
+        self.fuchsiaCheck.stateChanged.connect(lambda:self.color_list(self.fuchsiaCheck))
+        self.honeydewCheck.stateChanged.connect(lambda:self.color_list(self.honeydewCheck))
+        self.hotpinkCheck.stateChanged.connect(lambda:self.color_list(self.hotpinkCheck))
+        self.skyblueCheck.stateChanged.connect(lambda:self.color_list(self.skyblueCheck))
+        self.yellowCheck.stateChanged.connect(lambda:self.color_list(self.yellowCheck))
+        self.purpleCheck.stateChanged.connect(lambda:self.color_list(self.purpleCheck))
+        self.siennaCheck.stateChanged.connect(lambda:self.color_list(self.siennaCheck))
+        self.springgreenCheck.stateChanged.connect(lambda:self.color_list(self.springgreenCheck))
+        self.khakiCheck.stateChanged.connect(lambda:self.color_list(self.khakiCheck))
+        ### kick uki
 
     def createExampleGroup(self,ind):
         
@@ -184,7 +160,7 @@ class Window(QWidget):
     def color_list(self,state):
         if self.whiteCheck.isChecked():
             self.color.append('#ffffff')
-            print("White Test")
+            print(self.color)
         if self.blackCheck.isChecked():
             self.color.append('#000000')
         if self.redCheck.isChecked():
