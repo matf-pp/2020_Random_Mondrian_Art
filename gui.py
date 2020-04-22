@@ -7,7 +7,7 @@ class Window(QWidget):
     
     def __init__(self,parent=None):
         super(Window,self).__init__(parent)
-        self.whiteCheck=QCheckBox('WHITE')
+        self.seagreenCheck=QCheckBox('SEAGREEN')
         self.aquaCheck= QCheckBox("AQUA")
         self.indigoCheck = QCheckBox("INDIGO")
         self.turquoiseCheck = QCheckBox("TURQUOISE")
@@ -33,7 +33,7 @@ class Window(QWidget):
     
     def initUI(self):    
         grid=QGridLayout()
-        self.whiteCheck.setStyleSheet('color: #ffffff')
+        self.seagreenCheck.setStyleSheet('color: #2E8B57')
         self.aquaCheck.setStyleSheet('color: #00ffff')
         self.indigoCheck.setStyleSheet('color: #4b0082')
         self.turquoiseCheck.setStyleSheet('color: #40e0d0')
@@ -72,7 +72,7 @@ class Window(QWidget):
        
         
         ###
-        self.whiteCheck.stateChanged.connect(lambda: self.color_list(self.whiteCheck))
+        self.seagreenCheck.stateChanged.connect(lambda: self.color_list(self.seagreenCheck))
         self.aquaCheck.stateChanged.connect(lambda:self.color_list(self.aquaCheck))
         self.indigoCheck.stateChanged.connect(lambda:self.color_list(self.indigoCheck))
         self.turquoiseCheck.stateChanged.connect(lambda:self.color_list(self.turquoiseCheck))
@@ -103,7 +103,7 @@ class Window(QWidget):
         label=QLabel(self)
     
         if ind==1:
-            vbox.addWidget(self.whiteCheck)
+            vbox.addWidget(self.seagreenCheck)
             vbox.addWidget(self.aquaCheck)
             vbox.addWidget(self.indigoCheck)
             vbox.addWidget(self.turquoiseCheck)
@@ -158,8 +158,8 @@ class Window(QWidget):
         return groupBox
 
     def color_list(self,state):
-        if self.whiteCheck.isChecked():
-            self.color.add('#ffffff')
+        if self.seagreenCheck.isChecked():
+            self.color.add('#2E8B57')
             print(self.color)
         if self.blackCheck.isChecked():
             self.color.add('#000000')
