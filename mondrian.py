@@ -107,11 +107,11 @@ def make_art(w, h, cl):
     colors = cl
     n = len(colors)
     colors.extend(colors)
-    colors.extend(['white' for i in range(1, 2*n)])
+    colors.extend(['white' for i in range(1,n)])
     colors.append('black')
     rect_list = []
     mondrian(0, 0, w, h, rect_list)
     make_svg(rect_list)
 
 
-make_art(1090, 720, ['red', 'blue', 'yellow'])
+

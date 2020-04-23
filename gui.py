@@ -1,4 +1,5 @@
 import sys
+from mondrian import make_art
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
@@ -32,7 +33,7 @@ class Window(QWidget):
         self.siennaCheck = QCheckBox("SIENNA")
         self.springgreenCheck = QCheckBox("SPRINGGREEN")
         self.khakiCheck = QCheckBox("KHAKI")
-        self.color = set()
+        self.color = []
         self.initUI()
         self.show()
     
@@ -142,48 +143,49 @@ class Window(QWidget):
 
     def color_list(self,state):
         if self.seagreenCheck.isChecked():
-            self.color.add('#2E8B57')
+            self.color.append('#2E8B57')
         if self.aquamarineCheck.isChecked():
-            self.color.add('#7FFFD4')
+            self.color.append('#7FFFD4')
         if self.redCheck.isChecked():
-            self.color.add('#ff0000') 
+            self.color.append('#ff0000') 
         if self.yellowCheck.isChecked():
-            self.color.add('#ffff00')
+            self.color.append('#ffff00')
         if self.aquaCheck.isChecked():
-            self.color.add('#00ffff')
+            self.color.append('#00ffff')
         if self.blueCheck.isChecked():
-            self.color.add('#0000ff')
+            self.color.append('#0000ff')
         if self.fuchsiaCheck.isChecked():
-            self.color.add('#ff00ff')
+            self.color.append('#ff00ff')
         if self.purpleCheck.isChecked():
-            self.color.add('#800080')
+            self.color.append('#800080')
         if self.indigoCheck.isChecked():
-            self.color.add('#4b0082')
+            self.color.append('#4b0082')
         if self.seashellCheck.isChecked():
-            self.color.add('#fff5ee')
+            self.color.append('#fff5ee')
         if self.honeydewCheck.isChecked():
-            self.color.add('#f0fff0')
+            self.color.append('#f0fff0')
         if self.siennaCheck.isChecked(): 
-            self.color.add('#a0522d')
+            self.color.append('#a0522d')
         if self.turquoiseCheck.isChecked():
-            self.color.add('#40e0d0')
+            self.color.append('#40e0d0')
         if self.navyCheck.isChecked():
-            self.color.add('#000080')
+            self.color.append('#000080')
         if self.hotpinkCheck.isChecked():
-            self.color.add('#ff69b4')
+            self.color.append('#ff69b4')
         if self.springgreenCheck.isChecked():
-            self.color.add('#00ff7f')
+            self.color.append('#00ff7f')
         if self.limeCheck.isChecked():
-            self.color.add('#00ff00')
+            self.color.append('#00ff00')
         if self.coralCheck.isChecked():
-            self.color.add('#ff7f50')
+            self.color.append('#ff7f50')
         if self.skyblueCheck.isChecked():
-            self.color.add('#87ceeb')
+            self.color.append('#87ceeb')
         if self.khakiCheck.isChecked(): 
-            self.color.add('#f0e68c')
+            self.color.append('#f0e68c')
         if len(self.color) < 2:
             print("Greska")
-        print(self.color)
+        make_art(1024,760,self.color)  
+        
 
 if __name__== '__main__':
     app=QApplication([])
