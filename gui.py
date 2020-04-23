@@ -11,7 +11,8 @@ class Window(QWidget):
         p = self.palette()
         p.setColor(self.backgroundRole(), color)
         self.setPalette(p)
-        
+        self.edit1 = QLineEdit(self)
+        self.edit2 = QLineEdit(self)
         self.button1 = QPushButton(self)
         self.seagreenCheck=QCheckBox("SEAGREEN")
         self.aquaCheck= QCheckBox("AQUA")
@@ -115,16 +116,16 @@ class Window(QWidget):
             vbox.addWidget(self.khakiCheck)
         
         elif ind==5:
-            edit = QLineEdit(self)
+            
             label.setText('Width:')
             hbox.addWidget(label)
-            hbox.addWidget(edit)
+            hbox.addWidget(self.edit1)
             
         elif ind==6:
-            edit = QLineEdit(self)
+            
             label.setText('Height:')
             hbox.addWidget(label)
-            hbox.addWidget(edit)
+            hbox.addWidget(self.edit2)
            
         elif ind==7:
             self.button1.setText("Generate")
@@ -184,7 +185,10 @@ class Window(QWidget):
             self.color.append('#f0e68c')
         if len(self.color) < 2:
             print("Greska")
-        make_art(1024,760,self.color)  
+        if self.edit1.text()  == "" or self.edit2.text() == "":
+            
+            print("Greska za visinu i sirinu")
+        make_art(float(self.edit1.text()),float(self.edit2.text()),self.color)  
         
 
 if __name__== '__main__':
