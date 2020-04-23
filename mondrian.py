@@ -1,5 +1,5 @@
 import numpy as np
-from itertools import cycle
+
 WIDTH = 1024   
 HEIGHT = 768
 SPLIT_LOWER = 85
@@ -91,20 +91,27 @@ def mondrian(x,y,w,h, rect_list):
         elif vsplit < h:
             split_ver(x,y,w,h, rect_list)
         else:
-            color = next(colors)
+            color = choose_color()
             rect_list.append('<rect x="{}" y="{}" width="{}" height="{}" style="fill: {}"/>'.format(x, y, w, h, color))
-            rect_list.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x,y,x+w,y))
-            rect_list.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x,y+h,x,y))
-            rect_list.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x+w,y+h,x+w,y))
-            rect_list.append('<line x1="{}" y1="{}" x2="{}" y2="{}"/>'.format(x+w,y+h,x,y+h))
+            rect_list.append('<line x1="{}" y1="{}" x2="{}" y2="{}" style="stroke:rgb(0,0,0);stroke-width:2px" />'.format(x,y,x+w,y))
+            rect_list.append('<line x1="{}" y1="{}" x2="{}" y2="{}" style="stroke:rgb(0,0,0);stroke-width:2px" />'.format(x,y+h,x,y))
+            rect_list.append('<line x1="{}" y1="{}" x2="{}" y2="{}" style="stroke:rgb(0,0,0);stroke-width:2px" />'.format(x+w,y+h,x+w,y))
+            rect_list.append('<line x1="{}" y1="{}" x2="{}" y2="{}" style="stroke:rgb(0,0,0);stroke-width:2px"/>'.format(x+w,y+h,x,y+h))
 
-## mondrian and make_svg is called in main()
-def function(w, h, cl):
-    global colors 
-    colors = cycle(cl)
+def choose_color():
+    np.random.shuffle(colors)
+    return colors[0]
+
+def make_art(w, h, cl):
+    global colors
+    colors = cl
+    n = len(colors)
+    colors.extend(colors)
+    colors.extend(['white' for i in range(1, 2*n)])
+    colors.append('black')
     rect_list = []
     mondrian(0, 0, w, h, rect_list)
     make_svg(rect_list)
 
 
-function(1090, 720, ['red', 'blue', 'yellow'])
+make_art(1090, 720, ['red', 'blue', 'yellow'])
