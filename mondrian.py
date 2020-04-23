@@ -1,7 +1,7 @@
 import numpy as np
 
-WIDTH = 1024   
-HEIGHT = 768
+#WIDTH = 1024   
+#HEIGHT = 768
 SPLIT_LOWER = 85
 SPLIT_TOL = 1.5
 
@@ -103,6 +103,10 @@ def choose_color():
     return colors[0]
 
 def make_art(w, h, cl):
+    global WIDTH 
+    WIDTH = w
+    global HEIGHT
+    HEIGHT = h
     global colors
     colors = cl
     n = len(colors)

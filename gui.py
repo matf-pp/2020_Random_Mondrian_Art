@@ -3,6 +3,7 @@ from mondrian import make_art
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
+from tkinter import Tk
 class Window(QWidget):
     
     def __init__(self,parent=None):
@@ -186,9 +187,13 @@ class Window(QWidget):
         if len(self.color) < 2:
             print("Greska")
         if self.edit1.text()  == "" or self.edit2.text() == "":
-            
+            root = Tk()
+            w = root.winfo_screenwidth()
+            h = root.winfo_screenheight()
+            make_art(w,h,self.color)
             print("Greska za visinu i sirinu")
-        make_art(float(self.edit1.text()),float(self.edit2.text()),self.color)  
+        else:    
+            make_art(float(self.edit1.text()),float(self.edit2.text()),self.color)  
         
 
 if __name__== '__main__':
