@@ -9,6 +9,7 @@ class Window(QWidget):
         p = self.palette()
         p.setColor(self.backgroundRole(), color)
         self.setPalette(p)
+        
         self.initUI()
         self.show()
     def initUI(self):
@@ -17,8 +18,8 @@ class Window(QWidget):
         self.setMinimumSize(300, 300)
         grid=QGridLayout()
 
-
-app=QApplication([])
-window=Window()
-app.exec_()
+def startFunction():
+    app=QApplication([])
+    window=Window()
+    app.exec_()
 
