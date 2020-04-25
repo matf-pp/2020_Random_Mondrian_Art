@@ -1,11 +1,69 @@
 import sys
-from preview import *
+import os
 from mondrian import make_art
-from preview import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from tkinter import Tk
+from PyQt5.QtSvg import *
+
+errind = False
+class Window2(QWidget):
+    
+    def __init__(self,parent=None):
+        super().__init__()
+        color = QColor(128,128,128)
+        p = self.palette()
+        p.setColor(self.backgroundRole(), color)
+        self.setPalette(p)
+        self.svg = QSvgWidget()
+        self.backbutton = QPushButton()
+        self.saveButton = QPushButton()
+        self.saveName = QLineEdit()
+        self.label = QLabel("Unesite ime fajla u kom zelite da sacuvate sliku:")
+        self.initUI()
+       
+    def initUI(self):
+        self.setMaximumWidth(600)
+        self.setMaximumHeight(600)
+        self.setMinimumSize(300, 300)
+        self.setWindowTitle("Preview")
+        
+        grid=QGridLayout()
+        self.setLayout(grid)
+        grid.addWidget(self.svg,1,0,5,5)
+        
+        self.svg.load("art.svg")
+        
+        grid.addWidget(self.backbutton,7,4)
+        self.backbutton.setText("Back")
+        self.backbutton.clicked.connect(lambda: self.b(self.backbutton))
+        
+        grid.addWidget(self.saveName,7,0,1,3)
+        grid.addWidget(self.saveButton,7,3,1,1)
+        self.saveButton.setText("Save")
+        self.saveButton.clicked.connect(lambda: self.savePush(self.saveButton))
+    
+        
+        grid.addWidget(self.label,6,0,1,5)
+        
+        self.show()
+    def savePush(self,state):
+        if self.saveName.text() == "":
+            QMessageBox.about(self,"Greska","Unesite ime fajla gde zelite da sacuvate sliku")
+        else:
+            ime = self.saveName.text()
+            ime += ".svg"
+            try:
+                os.rename("art.svg",ime)
+                QMessageBox.about(self,"Sacuvano","Fajl je sacuvan")
+            except OSError:
+                QMessageBox.about(self,"Greska","Fajl koji trazite ne postoji")
+                
+            
+    def b(self,state):
+        self.close()
+        self.next = Window()
 
 class Window(QWidget):
     
@@ -40,7 +98,6 @@ class Window(QWidget):
         self.khakiCheck = QCheckBox("KHAKI")
         self.rButton = QRadioButton(self)
         self.color = []
-        self.dialogs = list()
         self.initUI()
         self.show()
     
@@ -151,6 +208,7 @@ class Window(QWidget):
         return groupBox
 
     def color_list(self,state):
+        self.color = []
         if self.seagreenCheck.isChecked():
             self.color.append('#2E8B57')
         if self.aquamarineCheck.isChecked():
@@ -191,21 +249,24 @@ class Window(QWidget):
             self.color.append('#87ceeb')
         if self.khakiCheck.isChecked(): 
             self.color.append('#f0e68c')
-        if len(self.color) < 2:
-            print("Greska")
-        if self.edit1.text()  == "" or self.edit2.text() == "":
-            root = Tk()
-            w = root.winfo_screenwidth()
-            h = root.winfo_screenheight()
-            make_art(w,h,self.color)
-            self.close()
-            self.next = Window2()
-        else:    
-            make_art(float(self.edit1.text()),float(self.edit2.text()),self.color)  
-        if self.rButton.isChecked():
-            print("Klikno si radiobuton dud")
+        if len(self.color) > 2:
+            if self.edit1.text()  == "" or self.edit2.text() == "":
+                root = Tk()
+                w = root.winfo_screenwidth()
+                h = root.winfo_screenheight()
+                make_art(w,h,self.color)
+                self.close()
+                self.next = Window2()
+                
+            else:    
+                make_art(float(self.edit1.text()),float(self.edit2.text()),self.color)  
+            if self.rButton.isChecked():
+                print("Klikno si radiobuton dud")
+        else:
+                QMessageBox.about(self,"Greska","Morate oznaciti bar 3 boje")
+        
 
-if __name__== '__main__':
-    app=QApplication([])
-    window=Window()
-    app.exec_()
+
+app=QApplication([])
+window=Window()
+app.exec_()
