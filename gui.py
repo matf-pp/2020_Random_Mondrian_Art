@@ -1,32 +1,16 @@
 import sys
+from preview import *
 from mondrian import make_art
 from preview import *
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from tkinter import Tk
-class Window2(QWidget):
-    def __init__(self,parent=None):
-        QWidget.__init__(self)
-        color = QColor(128,128,128)
-        p = self.palette()
-        p.setColor(self.backgroundRole(), color)
-        self.setPalette(p)
-        
-        self.initUI()
-        
-    def initUI(self):
-        self.setMaximumWidth(600)
-        self.setMaximumHeight(600)
-        self.setMinimumSize(300, 300)
-        grid=QGridLayout()
-
-
 
 class Window(QWidget):
     
     def __init__(self,parent=None):
-        QWidget.__init__(self)
+        super().__init__()
         color = QColor(128,128,128)
         p = self.palette()
         p.setColor(self.backgroundRole(), color)
@@ -54,6 +38,7 @@ class Window(QWidget):
         self.siennaCheck = QCheckBox("SIENNA")
         self.springgreenCheck = QCheckBox("SPRINGGREEN")
         self.khakiCheck = QCheckBox("KHAKI")
+        self.rButton = QRadioButton(self)
         self.color = []
         self.dialogs = list()
         self.initUI()
@@ -151,9 +136,11 @@ class Window(QWidget):
         elif ind==7:
             self.button1.setText("Generate")
             self.button1.clicked.connect(lambda: self.color_list(self.button1))
-            rButton = QRadioButton(self)
-            rButton.setText("Pattern Fill")
-            vbox.addWidget(rButton)
+           
+            self.rButton.setText("Pattern Fill")
+            
+            
+            vbox.addWidget(self.rButton)
             vbox.addWidget(self.button1)
         
         if not (ind ==5 or ind==6):
@@ -211,12 +198,12 @@ class Window(QWidget):
             w = root.winfo_screenwidth()
             h = root.winfo_screenheight()
             make_art(w,h,self.color)
-            Window2().show()
-            
-            print("Greska za visinu i sirinu")
+            self.close()
+            self.next = Window2()
         else:    
             make_art(float(self.edit1.text()),float(self.edit2.text()),self.color)  
-        
+        if self.rButton.isChecked():
+            print("Klikno si radiobuton dud")
 
 if __name__== '__main__':
     app=QApplication([])
