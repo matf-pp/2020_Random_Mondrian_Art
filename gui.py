@@ -31,22 +31,35 @@ class Window2(QWidget):
         
         grid=QGridLayout()
         self.setLayout(grid)
-        grid.addWidget(self.svg,1,0,5,5)
         
-        self.svg.load("art.svg")
-        
-        grid.addWidget(self.backbutton,7,4)
         self.backbutton.setText("Back")
         self.backbutton.clicked.connect(lambda: self.b(self.backbutton))
         
-        grid.addWidget(self.saveName,7,0,1,3)
-        grid.addWidget(self.saveButton,7,3,1,1)
         self.saveButton.setText("Save")
         self.saveButton.clicked.connect(lambda: self.savePush(self.saveButton))
+        if rb_ind == 0:
+            grid.addWidget(self.svg,1,0,5,5)
+        
+            self.svg.load("art.svg")
+        
+            grid.addWidget(self.backbutton,7,4)
+            
+        
+            grid.addWidget(self.saveName,7,0,1,3)
+            grid.addWidget(self.saveButton,7,3,1,1)
+            
     
         
-        grid.addWidget(self.label,6,0,1,5)
+            grid.addWidget(self.label,6,0,1,5)
+        else:
+            grid.addWidget(self.backbutton,2,4)
+            grid.addWidget(self.saveName,2,0,1,3)
+            grid.addWidget(self.saveButton,2,3,1,1)
+            
+    
         
+            grid.addWidget(self.label,1,0,1,5)
+            
         self.show()
     def savePush(self,state):
         if self.saveName.text() == "":
@@ -58,7 +71,7 @@ class Window2(QWidget):
                 os.rename("art.svg",ime)
                 QMessageBox.about(self,"Sacuvano","Fajl je sacuvan")
             except OSError:
-                QMessageBox.about(self,"Greska","Fajl koji trazite ne postoji")
+                QMessageBox.about(self,"Greska","Fajl koji trazite ne postoji ili ste napisali ime vec postojeceg fajla")
                 
             
     def b(self,state):
@@ -208,6 +221,7 @@ class Window(QWidget):
         return groupBox
 
     def color_list(self,state):
+        global rb_ind
         rb_ind = 0
         self.color = []
         if self.seagreenCheck.isChecked():
