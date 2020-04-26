@@ -151,8 +151,7 @@ def make_art(w, h, cl, rb):
     global WIDTH 
     WIDTH = w
     global HEIGHT
-    global pattern_cnt
-    pattern_cnt = 0
+   
     HEIGHT = h
     global clrs
     global colors

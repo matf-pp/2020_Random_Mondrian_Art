@@ -8,7 +8,6 @@ from PyQt5.QtGui import *
 from tkinter import Tk
 from PyQt5.QtSvg import *
 
-errind = False
 class Window2(QWidget):
     
     def __init__(self,parent=None):
@@ -239,7 +238,7 @@ class Window(QWidget):
 
     def color_list(self,state):
         global rb_ind
-        rb_ind = 0
+        rb_ind = False
         self.color = []
         if self.seagreenCheck.isChecked():
             self.color.append('#2E8B57')
@@ -283,17 +282,20 @@ class Window(QWidget):
             self.color.append('#f0e68c')
         if len(self.color) > 2:
             if self.rButton.isChecked():
-                rb_ind=1
+                rb_ind=True
             if self.edit1.text()  == "" or self.edit2.text() == "":
                 root = Tk()
                 w = root.winfo_screenwidth()
                 h = root.winfo_screenheight()
                 make_art(w,h,self.color, rb_ind)
-                self.close()
-                self.next = Window2()
                 
-            else:    
+                
+            else: 
+                print("Wat")
                 make_art(float(self.edit1.text()),float(self.edit2.text()),self.color,rb_ind)  
+            
+            self.close()
+            self.next = Window2()
         else:
                 QMessageBox.about(self,"Greska","Morate oznaciti bar 3 boje")
         
