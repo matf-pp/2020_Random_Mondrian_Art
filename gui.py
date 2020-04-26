@@ -4,7 +4,6 @@ from mondrian import make_art
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
-
 from tkinter import Tk
 from PyQt5.QtSvg import *
 
@@ -37,7 +36,7 @@ class Window2(QWidget):
         
         self.saveButton.setText("Save")
         self.saveButton.clicked.connect(lambda: self.savePush(self.saveButton))
-        if rb_ind == 0:
+        if rb_ind == False:
             grid.addWidget(self.svg,1,0,5,5)
         
             self.svg.load("art.svg")
@@ -67,8 +66,6 @@ class Window2(QWidget):
         else:
             ime = self.saveName.text()
             ime += ".svg"
-            nameind = 0
-            global errind
             errind = 0
             if os.path.exists(ime):
                 os.remove(ime)
@@ -77,7 +74,6 @@ class Window2(QWidget):
             except OSError:
                 errind = 1   
            
-                       
             if errind == 1:
                 QMessageBox.about(self,"Greska","Greska prilikom cuvanja. Pokusajte ponov.")
             else:
@@ -294,13 +290,14 @@ class Window(QWidget):
                 print("Wat")
                 make_art(float(self.edit1.text()),float(self.edit2.text()),self.color,rb_ind)  
             
+            
             self.close()
             self.next = Window2()
         else:
-                QMessageBox.about(self,"Greska","Morate oznaciti bar 3 boje")
+            QMessageBox.about(self,"Greska","Morate oznaciti bar 3 boje")
         
 
-
-app=QApplication([])
-window=Window()
-app.exec_()
+if __name__ == "__main__":
+    app=QApplication([])
+    window=Window()
+    app.exec_()

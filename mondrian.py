@@ -1,9 +1,10 @@
 import numpy as np
-
+import os
 #WIDTH = 1024   
 #HEIGHT = 768
 SPLIT_LOWER = 85
 SPLIT_TOL = 1.5
+svg_list = []
 pattern_list = []
 rect_list = []
 ID=0
@@ -11,6 +12,8 @@ ID=0
 
 
 def make_svg():
+    if os.path.exists("art.svg"):
+        os.remove("art.svg")
     with open('art.svg', 'w') as file:
         svg_list= ['<?xml version="1.0" encoding="utf-8"?>',
                '<svg xmlns="http://www.w3.org/2000/svg"',
@@ -146,12 +149,11 @@ def choose_fill():
 
 
 def make_art(w, h, cl, rb):
-    global rb_ind
+    global rb_ind 
     rb_ind = rb
-    global WIDTH 
+    global WIDTH
     WIDTH = w
     global HEIGHT
-   
     HEIGHT = h
     global clrs
     global colors
@@ -161,10 +163,19 @@ def make_art(w, h, cl, rb):
     clrs.extend(clrs)
     clrs.extend(['white' for i in range(1, int(0.75*n))])
     clrs.append('black')
+    pattern_list = []
+    rect_list = []
+    svg_list = []
+    ID = 0
     mondrian(0, 0, w, h)
     make_svg()
+    clrs = []
+    colors = []
+    rb_int = False
+    
+    print(colors)
+    print(clrs)
 
+if __name__ == "__main__":
+    make_art(1024, 720, ['red', 'green', 'blue', 'yellow', 'orange', 'khaki', 'aqua', 'purple', 'honeydew', 'springgreen', 'indigo', 'hotpink', 'coral'], True)
 
-#make_art(1024, 720, ['red', 'green', 'blue', 'yellow', 'orange', 'khaki', 'aqua', 'purple', 'honeydew', 'springgreen', 'indigo', 'hotpink', 'coral'], True)
-#print(colors)
-#print(clrs)
