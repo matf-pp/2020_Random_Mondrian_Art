@@ -262,7 +262,7 @@ class Window(QWidget):
                 self.next = Window2()
                 
             else:    
-                make_art(float(self.edit1.text()),float(self.edit2.text()),self.color)  
+                make_art(float(self.edit1.text()),float(self.edit2.text()),self.color,rb_ind)  
         else:
                 QMessageBox.about(self,"Greska","Morate oznaciti bar 3 boje")
         
