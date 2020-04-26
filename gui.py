@@ -208,6 +208,7 @@ class Window(QWidget):
         return groupBox
 
     def color_list(self,state):
+        rb_ind = 0
         self.color = []
         if self.seagreenCheck.isChecked():
             self.color.append('#2E8B57')
@@ -250,18 +251,18 @@ class Window(QWidget):
         if self.khakiCheck.isChecked(): 
             self.color.append('#f0e68c')
         if len(self.color) > 2:
+            if self.rButton.isChecked():
+                rb_ind=1
             if self.edit1.text()  == "" or self.edit2.text() == "":
                 root = Tk()
                 w = root.winfo_screenwidth()
                 h = root.winfo_screenheight()
-                make_art(w,h,self.color)
+                make_art(w,h,self.color, rb_ind)
                 self.close()
                 self.next = Window2()
                 
             else:    
                 make_art(float(self.edit1.text()),float(self.edit2.text()),self.color)  
-            if self.rButton.isChecked():
-                print("Klikno si radiobuton dud")
         else:
                 QMessageBox.about(self,"Greska","Morate oznaciti bar 3 boje")
         
