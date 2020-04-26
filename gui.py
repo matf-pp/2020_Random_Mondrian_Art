@@ -4,6 +4,7 @@ from mondrian import make_art
 from PyQt5.QtWidgets import *
 from PyQt5.QtCore import *
 from PyQt5.QtGui import *
+
 from tkinter import Tk
 from PyQt5.QtSvg import *
 
@@ -67,11 +68,27 @@ class Window2(QWidget):
         else:
             ime = self.saveName.text()
             ime += ".svg"
+            nameind = 0
+            global errind
+            errind = 0
+            if os.path.exists(ime):
+                os.remove(ime)
             try:
                 os.rename("art.svg",ime)
-                QMessageBox.about(self,"Sacuvano","Fajl je sacuvan")
             except OSError:
-                QMessageBox.about(self,"Greska","Fajl koji trazite ne postoji ili ste napisali ime vec postojeceg fajla")
+                errind = 1   
+           
+                       
+            if errind == 1:
+                QMessageBox.about(self,"Greska","Greska prilikom cuvanja. Pokusajte ponov.")
+            else:
+                QMessageBox.about(self,"Uspeh","Uspesno sacuvan")
+                    
+           
+            
+
+        
+            
                 
             
     def b(self,state):
