@@ -10,7 +10,6 @@ rect_list = []
 ID=0
 ## REMOVE rect_list FROMA FUNCTION CALLS################################################
 
-
 def make_svg():
     if os.path.exists("art.svg"):
         os.remove("art.svg")
@@ -32,7 +31,8 @@ def make_svg():
         svg_list.append('</svg>')
         svg_str = '\n'.join(svg_list)
         file.write(svg_str)
-
+        pattern_list.clear()
+        rect_list.clear()
 
 
 def split_both(x,y,w,h):
@@ -93,13 +93,11 @@ def mondrian(x,y,w,h):
             rect_list.append('<line x1="{}" y1="{}" x2="{}" y2="{}" style="stroke:rgb(0,0,0);stroke-width:2px" />'.format(x+w,y+h,x+w,y))
             rect_list.append('<line x1="{}" y1="{}" x2="{}" y2="{}" style="stroke:rgb(0,0,0);stroke-width:2px"/>'.format(x+w,y+h,x,y+h))
 
-
-
 def choose_fill():
     global ID
     np.random.shuffle(colors)
 
-    if rb_ind and np.random.random_sample() > 0.6: 
+    if rb_ind and np.random.random_sample() > 0.8: 
         ind = np.random.randint(1, 7)
         if ind == 1:
             pattern_list.extend(['<pattern id="{}" x="0" y="0" width="25" height="25" patternUnits="userSpaceOnUse">'.format(str(ID)),
@@ -163,19 +161,7 @@ def make_art(w, h, cl, rb):
     clrs.extend(clrs)
     clrs.extend(['white' for i in range(1, int(0.75*n))])
     clrs.append('black')
-    pattern_list = []
-    rect_list = []
-    svg_list = []
-    ID = 0
     mondrian(0, 0, w, h)
-    make_svg()
-    clrs = []
-    colors = []
-    rb_int = False
-    
-    print(colors)
-    print(clrs)
+    string = make_svg()
 
-if __name__ == "__main__":
-    make_art(1024, 720, ['red', 'green', 'blue', 'yellow', 'orange', 'khaki', 'aqua', 'purple', 'honeydew', 'springgreen', 'indigo', 'hotpink', 'coral'], True)
-
+#if __name__ == "__main__":
