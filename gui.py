@@ -6,26 +6,21 @@ from PyQt5.QtCore import *
 from PyQt5.QtGui import *
 from tkinter import Tk
 from PyQt5.QtSvg import *
-
-class Window2(QWidget):
-    
+class WindowPatern(QWidget):
     def __init__(self,parent=None):
         super().__init__()
         color = QColor(128,128,128)
         p = self.palette()
         p.setColor(self.backgroundRole(), color)
         self.setPalette(p)
-        self.svg = QSvgWidget()
         self.backbutton = QPushButton()
         self.saveButton = QPushButton()
         self.saveName = QLineEdit()
         self.label = QLabel("Unesite ime fajla u kom zelite da sacuvate sliku:")
+        self.setFixedSize(300,100)
         self.initUI()
-       
     def initUI(self):
-        self.setMaximumWidth(600)
-        self.setMaximumHeight(600)
-        self.setMinimumSize(300, 300)
+        
         self.setWindowTitle("Preview")
         
         grid=QGridLayout()
@@ -36,28 +31,11 @@ class Window2(QWidget):
         
         self.saveButton.setText("Save")
         self.saveButton.clicked.connect(lambda: self.savePush(self.saveButton))
-        if rb_ind == False:
-            grid.addWidget(self.svg,1,0,5,5)
-        
-            self.svg.load("art.svg")
-        
-            grid.addWidget(self.backbutton,7,4)
-            
-        
-            grid.addWidget(self.saveName,7,0,1,3)
-            grid.addWidget(self.saveButton,7,3,1,1)
-            
-    
-        
-            grid.addWidget(self.label,6,0,1,5)
-        else:
-            grid.addWidget(self.backbutton,2,4)
-            grid.addWidget(self.saveName,2,0,1,3)
-            grid.addWidget(self.saveButton,2,3,1,1)
-            
-    
-        
-            grid.addWidget(self.label,1,0,1,5)
+       
+        grid.addWidget(self.backbutton,2,4)
+        grid.addWidget(self.saveName,2,0,1,3)
+        grid.addWidget(self.saveButton,2,3,1,1)
+        grid.addWidget(self.label,1,0,1,5)
             
         self.show()
     def savePush(self,state):
@@ -80,12 +58,71 @@ class Window2(QWidget):
                 QMessageBox.about(self,"Uspeh","Uspesno sacuvan")
                     
            
-            
+    def b(self,state):
+        self.close()
+        self.next = Window()   
 
+class Window2(QWidget):
+    
+    def __init__(self,parent=None):
+        super().__init__()
+        color = QColor(128,128,128)
+        p = self.palette()
+        p.setColor(self.backgroundRole(), color)
+        self.setPalette(p)
+        self.svg = QSvgWidget()
+        self.backbutton = QPushButton()
+        self.saveButton = QPushButton()
+        self.saveName = QLineEdit()
+        self.label = QLabel("Unesite ime fajla u kom zelite da sacuvate sliku:")
+        self.setFixedSize(600,600)
+        self.initUI()
+       
+    def initUI(self):
+        self.setWindowTitle("Preview")
         
+        grid=QGridLayout()
+        self.setLayout(grid)
+        
+        self.backbutton.setText("Back")
+        self.backbutton.clicked.connect(lambda: self.b(self.backbutton))
+        
+        self.saveButton.setText("Save")
+        self.saveButton.clicked.connect(lambda: self.savePush(self.saveButton))
+        if rb_ind == False:
+            grid.addWidget(self.svg,1,0,5,5)
+            self.svg.load("art.svg")
+            grid.addWidget(self.backbutton,7,4)
+            grid.addWidget(self.saveName,7,0,1,3)
+            grid.addWidget(self.saveButton,7,3,1,1)
+            grid.addWidget(self.label,6,0,1,5)
+        else:
+            grid.addWidget(self.backbutton,2,4)
+            grid.addWidget(self.saveName,2,0,1,3)
+            grid.addWidget(self.saveButton,2,3,1,1)
+            grid.addWidget(self.label,1,0,1,5)
             
-                
-            
+        self.show()
+    def savePush(self,state):
+        if self.saveName.text() == "":
+            QMessageBox.about(self,"Greska","Unesite ime fajla gde zelite da sacuvate sliku")
+        else:
+            ime = self.saveName.text()
+            ime += ".svg"
+            errind = 0
+            if os.path.exists(ime):
+                os.remove(ime)
+            try:
+                os.rename("art.svg",ime)
+            except OSError:
+                errind = 1   
+           
+            if errind == 1:
+                QMessageBox.about(self,"Greska","Greska prilikom cuvanja. Pokusajte ponov.")
+            else:
+                QMessageBox.about(self,"Uspeh","Uspesno sacuvan")
+                    
+    
     def b(self,state):
         self.close()
         self.next = Window()
@@ -122,14 +159,12 @@ class Window(QWidget):
         self.springgreenCheck = QCheckBox("SPRINGGREEN")
         self.khakiCheck = QCheckBox("KHAKI")
         self.rButton = QRadioButton(self)
+        self.setFixedSize(450,300)
         self.color = []
         self.initUI()
         self.show()
     
     def initUI(self):  
-        self.setMaximumWidth(600)
-        self.setMaximumHeight(600)
-        self.setMinimumSize(300, 300)
         grid=QGridLayout()
         self.seagreenCheck.setStyleSheet('color: #2E8B57')
         self.aquaCheck.setStyleSheet('color: #00ffff')
@@ -168,8 +203,6 @@ class Window(QWidget):
         
 
     def createExampleGroup(self,ind):
-        
-        
         vbox=QVBoxLayout()
         hbox=QHBoxLayout()
         groupBox= QGroupBox()
@@ -220,7 +253,6 @@ class Window(QWidget):
             self.button1.clicked.connect(lambda: self.color_list(self.button1))
            
             self.rButton.setText("Pattern Fill")
-            
             
             vbox.addWidget(self.rButton)
             vbox.addWidget(self.button1)
@@ -278,7 +310,7 @@ class Window(QWidget):
             self.color.append('#f0e68c')
         if len(self.color) > 2:
             if self.rButton.isChecked():
-                rb_ind=True
+                rb_ind=True 
             if self.edit1.text()  == "" or self.edit2.text() == "":
                 root = Tk()
                 w = root.winfo_screenwidth()
@@ -289,10 +321,12 @@ class Window(QWidget):
             else: 
                 print("Wat")
                 make_art(float(self.edit1.text()),float(self.edit2.text()),self.color,rb_ind)  
-            
-            
             self.close()
-            self.next = Window2()
+            if rb_ind == False:
+                
+                self.next = Window2()
+            else:
+                self.next =WindowPatern()
         else:
             QMessageBox.about(self,"Greska","Morate oznaciti bar 3 boje")
         
