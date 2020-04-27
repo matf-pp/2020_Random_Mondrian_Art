@@ -1,14 +1,13 @@
 import numpy as np
 import os
-#WIDTH = 1024   
-#HEIGHT = 768
+
 SPLIT_LOWER = 85
 SPLIT_TOL = 1.5
 svg_list = []
 pattern_list = []
 rect_list = []
 ID=0
-## REMOVE rect_list FROMA FUNCTION CALLS################################################
+
 
 def make_svg():
     if os.path.exists("art.svg"):
@@ -164,4 +163,4 @@ def make_art(w, h, cl, rb):
     mondrian(0, 0, w, h)
     string = make_svg()
 
-#if __name__ == "__main__":
+
