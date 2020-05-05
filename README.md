@@ -56,4 +56,4 @@ This project is a university assignment from the subject [Programming Paradigms]
 Students authors of the projects:
 * Ana Milićević
 * Miloš Kutlešić
-* Urosš Dimitrijević
+* Uroš Dimitrijević
