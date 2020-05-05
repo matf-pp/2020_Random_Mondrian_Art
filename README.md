@@ -8,19 +8,19 @@ The main strategy for recursion is:
 height: 
  * Use recursion to split the region into 4 smaller regions (a vertical split and a horizontal split) with 
 the split location is chosen randomly 
-* Else if the region is wider than half the initial canvas size: 
+* Else: if the region is wider than half the initial canvas size: 
 Use recursion to split the region into 2 smaller regions using a vertical line with the split location chosen randomly 
-* Else if the region is taller than half the initial canvas size:
+* Else: if the region is taller than half the initial canvas size:
 Use recursion to split the region into 2 smaller regions using a horizontal line with the split 
 location is chosen randomly 
-* Else if the region is big enough to split both horizontally and vertically, and both a horizontal and vertical 
+* Else: if the region is big enough to split both horizontally and vertically, and both a horizontal and vertical 
 split is randomly selected: 
 Use recursion to split the region into 4 smaller regions (a vertical split and a horizontal split) with the split location is chosen randomly 
-* Else if the region is big enough to split horizontally, and a horizontal split is selected: 
+* Else: if the region is big enough to split horizontally, and a horizontal split is selected: 
 Use recursion to split the region into 2 smaller regions using a vertical line with the split location chosen randomly 
-* Else if the region is big enough to split vertically, a vertical split is selected: 
+* Else: if the region is big enough to split vertically, a vertical split is selected: 
 Use recursion to split the region into 2 smaller regions using a horizontal line with the split location is chosen randomly 
-* Else Fill the current region (randomly, either white or colored, and if colored, with a random 
+* Else:fill the current region (randomly, either white or colored, and if colored, with a random 
 determination of picked color, with a pattern or not). 
 
 ## Language
@@ -53,7 +53,7 @@ This project is a university assignment from the subject [Programming Paradigms]
 * Profesor: [doc dr Milena Vujošević Janičić](http://poincare.matf.bg.ac.rs/~milena/)
 * Assistant: [Marjana Šolajić](http://poincare.matf.bg.ac.rs/~marjana/)
 
-Students authors of the projects:
+Students authors of the project:
 * Ana Milićević
 * Miloš Kutlešić
 * Uroš Dimitrijević
