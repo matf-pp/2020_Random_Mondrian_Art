@@ -16,7 +16,7 @@ class WindowPatern(QWidget):
         self.backbutton = QPushButton()
         self.saveButton = QPushButton()
         self.saveName = QLineEdit()
-        self.label = QLabel("Unesite ime fajla u kom zelite da sacuvate sliku:")
+        self.label = QLabel("Enter the name of the file where you want to save your picture :")
         self.setFixedSize(300,100)
         self.initUI()
     def initUI(self):
@@ -40,7 +40,7 @@ class WindowPatern(QWidget):
         self.show()
     def savePush(self,state):
         if self.saveName.text() == "":
-            QMessageBox.about(self,"Greska","Unesite ime fajla gde zelite da sacuvate sliku")
+            QMessageBox.about(self,"Greska","Enter the name for picture to be saved")
         else:
             ime = self.saveName.text()
             ime += ".svg"
@@ -53,9 +53,9 @@ class WindowPatern(QWidget):
                 errind = 1   
            
             if errind == 1:
-                QMessageBox.about(self,"Greska","Greska prilikom cuvanja. Pokusajte ponov.")
+                QMessageBox.about(self,"Failure","Error while saving, try again.")
             else:
-                QMessageBox.about(self,"Uspeh","Uspesno sacuvan")
+                QMessageBox.about(self,"Success","Successfully saved.")
                     
            
     def b(self,state):
@@ -74,7 +74,7 @@ class Window2(QWidget):
         self.backbutton = QPushButton()
         self.saveButton = QPushButton()
         self.saveName = QLineEdit()
-        self.label = QLabel("Unesite ime fajla u kom zelite da sacuvate sliku:")
+        self.label = QLabel("Enter the name for file that you want to save picture at:")
         self.setFixedSize(600,600)
         self.initUI()
        
@@ -105,7 +105,7 @@ class Window2(QWidget):
         self.show()
     def savePush(self,state):
         if self.saveName.text() == "":
-            QMessageBox.about(self,"Greska","Unesite ime fajla gde zelite da sacuvate sliku")
+            QMessageBox.about(self,"Error","Enter the name of file, please.")
         else:
             ime = self.saveName.text()
             ime += ".svg"
@@ -118,9 +118,9 @@ class Window2(QWidget):
                 errind = 1   
            
             if errind == 1:
-                QMessageBox.about(self,"Greska","Greska prilikom cuvanja. Pokusajte ponov.")
+                QMessageBox.about(self,"Failure","Error while saving,try again.")
             else:
-                QMessageBox.about(self,"Uspeh","Uspesno sacuvan")
+                QMessageBox.about(self,"Success","Successfully saved.")
                     
     
     def b(self,state):
