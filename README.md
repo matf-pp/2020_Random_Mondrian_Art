@@ -54,6 +54,6 @@ This project is a university assignment from the subject [Programming Paradigms]
 * Assistant: [Marjana Šolajić](http://poincare.matf.bg.ac.rs/~marjana/)
 
 Students authors of the project:
-* Ana Milićević
-* Miloš Kutlešić
-* Uroš Dimitrijević
+* Ana Milićević (mr16042@alas.matf.bg.ac.rs)
+* Miloš Kutlešić (mr16182@alas.matf.bg.ac.rs)
+* Uroš Dimitrijević (mr16193@alas.matf.bg.ac.rs)
