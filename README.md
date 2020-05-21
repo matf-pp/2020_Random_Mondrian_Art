@@ -38,7 +38,9 @@ pip install numpy PyQt5
 ```
 ## Launching
 ### Windows :
-  Execute file gui.exe.
+   Execute file <br/>
+    ![icon][ic] randomMondrianArt.exe
+  
   
  ### Linux:
    ```bash
@@ -56,6 +58,7 @@ python3 gui.py
 
 [ex1]: https://raw.githubusercontent.com/matf-pp/2020_Random_Mondrian_Art/65e3799881a65aab6b9fbf420ce5465f0af07295/example_1.svg
 [ex2]: https://raw.githubusercontent.com/matf-pp/2020_Random_Mondrian_Art/65e3799881a65aab6b9fbf420ce5465f0af07295/example_2.svg
+[ic]:https://raw.githubusercontent.com/matf-pp/2020_Random_Mondrian_Art/master/icon.png
 
 ## Authors and acknowledgment
 This project is a university assignment from the subject [Programming Paradigms](http://www.programskijezici.matf.bg.ac.rs/ProgramskeParadigmeR.html)
