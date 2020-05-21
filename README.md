@@ -36,6 +36,15 @@ The project is written in [Python 3.8.2](https://www.python.org/) and packages w
 ```bash
 pip install numpy PyQt5
 ```
+## Launching
+### Windows :
+  Execute file gui.exe.
+  
+ ### Linux:
+   ```bash
+cd  2020_Random_Mondrian_Art-master
+python3 gui.py
+```
 
 ## Examples
 
