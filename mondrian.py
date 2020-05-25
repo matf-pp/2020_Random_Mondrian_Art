@@ -161,6 +161,6 @@ def make_art(w, h, cl, rb):
     clrs.extend(['white' for i in range(1, int(0.75*n))])
     clrs.append('black')
     mondrian(0, 0, w, h)
-    string = make_svg()
+     make_svg()
 
 
